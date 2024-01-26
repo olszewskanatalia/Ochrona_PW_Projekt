@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <h1>Create {{note_type}} Note</h1>
+    <form method="post" action="{{ url_for('create_note_with_type', note_type='PROTECTED') }}">
+        {{ form.csrf_token }}
+        {{ form.title.label }}
+        {{ form.title }}
+        {{ form.title.errors }}
+        <br>
+        {{ form.content.label }}
+        {{ form.content }}
+        {{ form.content.errors }}
+        <br>
+        {{ form.password.label }}
+        {{ form.password }}
+        {{ form.password.errors }}
+        <br>
+        {{ form.confirm_password.label }}
+        {{ form.confirm_password }}
+        {{ form.confirm_password.errors }}
+        <br>
+        <button type="submit">Create Note</button>
+    </form>
+    <a href="{{ url_for('homepage')}}">Back</a>
+</body>
+</html>

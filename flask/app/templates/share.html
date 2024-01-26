@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+  <h2>Edit Note</h2>
+  <br>
+  <form method="post" action="{{ url_for('share', note_id=note.note_id) }}">
+        {{ form.hidden_tag() }}
+        <div>
+            <p>This note was already shared with:</p>
+            {% for name in shared_users %}
+                <p>{{name}}</p>
+            {% endfor %}
+            <br>
+            <p>Provide public_id of user with whom you want to share this note:</p>
+            <label for="user_public_id">{{ form.user_public_id.label }}</label>
+            {{ form.user_public_id }}
+            {{ form.user_public_id.errors }}
+        </div>
+        <br>
+        {{ form.submit }}
+    </form>
+    {% for message in get_flashed_messages() %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+    <a href="{{ url_for('view_note', note_id=note.note_id) }}">Back</a>
+</body>
+</html>
+

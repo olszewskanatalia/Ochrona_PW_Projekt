@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <h1>Choose Note Type</h1>
+    <form method="post" action="{{ url_for('create_note') }}">
+        {{ form.csrf_token }}
+        {{ form.note_type.label }}
+        {{ form.note_type }}
+        <button type="submit">Next</button>
+    </form>
+    <a href="{{ url_for('homepage')}}">Back</a>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+  <h2>Edit Note</h2>
+  <br>
+  <form method="post" action="{{ url_for('edit', note_id=note.note_id) }}">
+        {{ form.hidden_tag() }}
+        <div>
+            <label for="title">{{ form.title.label }}</label>
+            {{ form.title(value=note.title) }}
+            {{ form.title.errors }}
+        </div>
+        <br>
+        <div>
+            <label for="content">{{ form.content.label }}</label>
+            {{ form.content(value=note.content) }}
+            {{ form.content.errors }}
+        </div>
+        <br>
+        </div>
+        {{ form.submit }}
+    </form>
+    {% for message in get_flashed_messages() %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+    <a href="{{ url_for('view_note', note_id=note.note_id) }}">Back</a>
+</body>
+</html>
+
